@@ -1,0 +1,65 @@
+Problem:
+
+Write a custom random number generation algo which should be 73% biased to the higher number.
+Like if I want a random number between 1 to 10 100times then it should give number more than 5 73times and less than 5 27times.
+You’re not allowed to use any predefined random number generation function nor use of any kind of third party library to generate random number.
+
+Alogrithum
+
+Random_number(minimum,maximum)
+Step-1: while count < 73
+step-2:   now = str(time.clock())
+step-3:   rnd = float(now[::-1][:3:])/1000
+step-4:	  dif = math.ceil((maximum+minimum)/2)
+step-5:   if rnd_n > diff:
+step-6: 	count_max+=1
+step-7:		rnd_list_h.append(rnd_n)
+step-8:	  else:
+step-9:		count_min+=1
+step-10:	rnd_list_m.append(rnd_n)
+step-11: print((rnd_list_h) + (rnd_list_m[0:27]))							
+
+Explanation:
+1) import time and math module
+2) define function with two arguments 
+3) take while loop which run count of 73 times because of ratio is basied random number is 73%
+4) than using time module or scaling get a random number
+5) find half of input numbers using math module 
+6) than check random number greater(>) or less(<) than half of input number
+7) if greater count_max increment number append in rnd_list_h or less count_min increment number append in rnd_list_m
+8) merge both list and get exect ratio of basied 73%.
+
+
+Program in Python	
+		
+import time
+import math
+def random_number(minimum,maximum):  #create a function
+  rnd_list_h=[] 					 #define list and variables	
+  rnd_list_m=[]
+  count_max=0
+  count_min=0
+    
+  while count_max<73:                     #while loop 
+    now = str(time.clock())				
+    rnd = float(now[::-1][:3:])/1000
+    rnd_n = minimum + rnd*(maximum-minimum)  #get a random number between input number
+    dif = math.ceil((maximum+minimum)/2)     # find half of limit 
+    if rnd_n >dif:                           # check random number is greater or less of half of input number
+      count_max+=1							 # count_max increment 	
+      rnd_list_h.append(rnd_n)				 # append in rnd_list_h 	
+    else:
+      count_min+=1							#if false tha count_min is increment
+      rnd_list_m.append(rnd_n)				# append in rnd_list_m
+   
+  print((rnd_list_h) + (rnd_list_m[0:27]))  #merge both list and print with exect ratio of 73%
+  
+y=random_number(1,10) #function calling with input number 1,10    
+
+Compile result
+
+input :
+y=random_number(1,10)
+
+output list:
+ [8.857, 8.047, 6.337, 9.937, 7.335999999999999, 9.226, 6.616, 8.506, 6.796, 8.686, 6.076, 9.676, 6.255999999999999, 9.856, 8.146, 8.245000000000001, 6.535, 8.425, 9.415000000000001, 7.705, 9.594999999999999, 7.885, 7.075, 8.677, 8.065000000000001, 6.3549999999999995, 9.955, 7.353999999999999, 9.244, 6.634, 9.424000000000001, 6.904, 6.9670000000000005, 7.894, 6.183999999999999, 9.783999999999999, 8.074, 8.164000000000001, 9.163, 8.353, 9.433, 6.823, 6.157, 8.713000000000001, 6.103, 9.703, 7.993, 6.2829999999999995, 9.883, 8.173, 9.262, 7.552, 6.742, 9.442, 7.732, 6.022, 9.622, 7.0120000000000005, 8.047, 9.802, 7.191999999999999, 9.847, 9.082, 6.481, 9.181000000000001, 7.471, 9.361, 6.751, 8.641, 7.831, 6.1209999999999996, 9.721, 7.111000000000001, 3.097, 3.4570000000000003, 4.447, 2.737, 3.7359999999999998, 2.026, 5.626, 3.916, 4.087, 5.806, 3.1959999999999997, 5.8870000000000005, 5.086, 3.3760000000000003, 4.366, 4.546, 5.779, 4.6450000000000005, 2.935, 3.277, 4.824999999999999, 2.215, 5.815, 4.1049999999999995, 2.395, 5.995, 4.285]
