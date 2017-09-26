@@ -7,7 +7,7 @@ You’re not allowed to use any predefined random number generation function nor
 Alogrithum
 
 Random_number(minimum,maximum)
-Step-1: while count < 73
+Step-1: while count_max < 73
 step-2:   now = str(time.clock())
 step-3:   rnd = float(now[::-1][:3:])/1000
 step-4:	  dif = math.ceil((maximum+minimum)/2)
@@ -35,7 +35,7 @@ Program in Python
 import time
 import math
 def random_number(minimum,maximum):  #create a function
-  rnd_list_h=[] 					 #define list and variables	
+  rnd_list_h=[] 		     #define list and variables	
   rnd_list_m=[]
   count_max=0
   count_min=0
